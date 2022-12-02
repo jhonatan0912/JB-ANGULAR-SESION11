@@ -9,21 +9,42 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 export class AppComponent implements OnInit {
 
-  ngOnInit() { }
+  ngOnInit() {
+    let op1 = document.getElementById('op1');
+    console.log(op1);
+  }
 
-  title = 'sesion11';
   form: FormGroup;
   resultado: Number = 0;
 
-  constructor(private fb: FormBuilder) {
+  suma: Number = 0;
+  resta: Number = 0;
+  multiplicacion: Number = 0;
+  division: Number = 0;
+
+
+  constructor(public fb: FormBuilder) {
     this.form = this.fb.group({
-      ingreso: ['', Validators.required],
-      egreso: ['', Validators.required]
-    })
+      firstNumber: ['', Validators.required],
+      secondNumber: ['', Validators.required]
+    });
+
   }
-  calcular() {
-    console.log(this.form.controls);
-    // console.log(this.form.value);
-    this.resultado = parseInt(this.form.value.ingreso) - parseInt(this.form.value.egreso)
+
+  op1(num1: any, num2: any) {
+    this.suma = Number(num1) + Number(num2)
+    return this.suma
+  }
+  op2(num1: any, num2: any) {
+    this.resta = Number(num1) - Number(num2)
+    return this.resta
+  }
+  op3(num1: any, num2: any) {
+    this.multiplicacion = Number(num1) * Number(num2)
+    return this.multiplicacion
+  }
+  op4(num1: any, num2: any) {
+    this.division = Number(num1) / Number(num2)
+    return this.division
   }
 }

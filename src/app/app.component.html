@@ -1,24 +1,33 @@
 <div class="container">
   <h1 class="text-center">Uso de Formulario Reactive con componentes de Angular Material</h1>
-  <form [formGroup]="form" (ngSubmit)="calcular()">
-    <p>Ingreso económico:</p>
+  <form [formGroup]="form">
+    <p>Ingrese primer valor</p>
     <mat-form-field apperance="fill">
-      <mat-label>Ingreso</mat-label>
-      <input type="number" matInput autocomplete="off" formControlName="ingreso">
+      <mat-label>Primer valor</mat-label>
+      <input type="number" matInput autocomplete="off" formControlName="firstNumber" #firstNumber>
     </mat-form-field>
     <br>
-    <p>Egresos económico:</p>
+    <p>Ingrese segundo valor</p>
     <mat-form-field apperance="fill">
-      <mat-label>Egreso</mat-label>
-      <input type="number" matInput autocomplete="off" formControlName="egreso">
+      <mat-label>Segundo valor</mat-label>
+      <input type="number" matInput autocomplete="off" formControlName="secondNumber" #secondNumber>
     </mat-form-field>
-    <br>
-    <div class="d-flex gap-3">
-      <button type="submit" mat-raised-button color="primary">Calcular</button>
-      <button type="reset" mat-stroked-button>Resetear</button>
+
+    <div class="slides d-flex flex-column">
+      <mat-slide-toggle color="primary" (change)="op1(firstNumber.value,secondNumber.value)">Sumar</mat-slide-toggle>
+      <mat-slide-toggle color="primary" (change)="op2(firstNumber.value,secondNumber.value)">Restar</mat-slide-toggle>
+      <mat-slide-toggle color="primary"
+        (change)="op3(firstNumber.value,secondNumber.value)">Multiplicar</mat-slide-toggle>
+      <mat-slide-toggle color="primary" (change)="op4(firstNumber.value,secondNumber.value)">Dividir</mat-slide-toggle>
     </div>
+
   </form>
+
   <div class="mt-5 h4">
-    <p *ngIf="resultado != 0 ">Ahorro: S/.{{resultado}}</p>
+    <p *ngIf="suma != 0">Suma: {{suma}}</p>
+    <p *ngIf="resta != 0">Resta: {{resta}}</p>
+    <p *ngIf="multiplicacion != 0">Multiplicacion: {{multiplicacion}}</p>
+    <p *ngIf="division != 0">Division: {{division}}</p>
   </div>
+
 </div>
