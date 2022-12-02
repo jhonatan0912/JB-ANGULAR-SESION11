@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="text-center">Uso de Formulario Reactive con componentes de Angular Material</h1>
+  <form [formGroup]="form" (ngSubmit)="calcular()">
+    <p>Ingreso económico:</p>
+    <mat-form-field apperance="fill">
+      <mat-label>Ingreso</mat-label>
+      <input type="number" matInput autocomplete="off" formControlName="ingreso">
+    </mat-form-field>
+    <br>
+    <p>Egresos económico:</p>
+    <mat-form-field apperance="fill">
+      <mat-label>Egreso</mat-label>
+      <input type="number" matInput autocomplete="off" formControlName="egreso">
+    </mat-form-field>
+    <br>
+    <div class="d-flex gap-3">
+      <button type="submit" mat-raised-button color="primary">Calcular</button>
+      <button type="reset" mat-stroked-button>Resetear</button>
+    </div>
+  </form>
+  <div class="mt-5 h4">
+    <p *ngIf="resultado != 0 ">Ahorro: S/.{{resultado}}</p>
+  </div>
+</div>
